@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
+/* Global rules */
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+}
+
+body {
+    font-family: 'Space Mono', monospace;
+    background-color: hsl(185, 41%, 84%);
+    color: hsl(186, 14%, 43%);
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Tip calculator */
+.main-title {
+    margin: 20px auto;
+    text-align: center;
+    letter-spacing: 10px;
+    color: hsl(183, 100%, 15%);
+}
+
+.tip-calculator {
+    width: 100%;
+    max-width: 840px;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 2em 2em 0 0;
+    padding: 2em;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.sub-title {
+    margin-bottom: 0.5em;
+}
+
+.sub-title:not(.sub-title:first-of-type) {
+    margin-top: 2em;
+}
+
+.input-field {
+    position: relative;
+}
+
+.input-field .icon {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(1em, -50%);
+}
+
+.input-field .value {
+    width: 100%;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: hsl(189, 41%, 97%);
+    outline: none;
+    padding: 0.5em;
+    text-align: right;
+    cursor: pointer;
+}
+
+.input-field .value:focus,
+.buttons-grid .tip-input:focus {
+    outline: 2px solid hsl(172, 67%, 45%);
+}
+
+.input-field.error .value {
+    outline: 2px solid red;
+}
+
+.input-field.error::before,
+.buttons-grid.error::before {
+    content: attr(data-message);
+    color: red;
+    position: absolute;
+    top: -2em;
+    right: 0;
+    font-style: italic;
+}
+
+.buttons-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    position: relative;
+}
+
+.buttons-grid button,
+.buttons-grid .tip-input {
+    width: 47%;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 0.25em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttons-grid.error .tip-input {
+    outline: 2px solid red;
+}
+
+.buttons-grid button {
+    background-color: hsl(183, 100%, 15%);
+    color: hsl(0, 0%, 100%);
+}
+
+.buttons-grid button:hover {
+    color: hsl(183, 100%, 15%);
+    background-color: hsl(185, 41%, 84%);
+}
+
+.buttons-grid button.active {
+    background-color: hsl(172, 67%, 45%);
+    color: hsl(183, 100%, 15%);
+}
+
+.buttons-grid .tip-input {
+    background-color: hsl(189, 41%, 97%);
+}
+
+.results-card {
+    background-color: hsl(183, 100%, 15%);
+    padding: 2em;
+    border-radius: 1em;
+    margin-top: 2em;
+}
+
+.result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: hsl(0, 0%, 100%);
+    margin: 1em 0;
+}
+
+.result span {
+    color: hsl(186, 14%, 43%);
+    font-size: 0.9rem;
+}
+
+.result-value {
+    color: hsl(172, 67%, 45%);
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-value svg {
+    transform: scale(1.75) translateX(-50%);
+}
+
+.results-card button {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 0.5em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    background-color: hsl(172, 67%, 45%);
+    color: hsl(183, 100%, 15%);
+    cursor: pointer;
+}
+
+.results-card button:hover {
+    background-color: hsl(185, 41%, 84%);
+}
+
+.results-card button.disabled {
+    opacity: 0.25;
+    background-color: hsl(172, 67%, 45%);
+    color: hsl(183, 100%, 15%);
+}
+
+@media (min-width: 840px) {
+    .tip-calculator {
+        display: flex;
+        gap: 2em;
+        border-radius: 1em;
+    }
+
+    .input-card,
+    .results-card {
+        width: 50%;
+    }
+
+    .results-card {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .buttons-grid button,
+    .buttons-grid .tip-input {
+        width: 30%;
+    }
+}
